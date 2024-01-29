@@ -1,9 +1,16 @@
-pipeline{
-    agent any
+pipeline {
+    agent any 
+    
     stages{
         stage('stage Name-1'){
             steps{
                 sh "echo I am using the Pipeline Syntax Help"
+            }
+        }
+
+        stage('stage Name-2'){
+            steps{
+                sh "echo this is pipeline"
             }
         }
 
