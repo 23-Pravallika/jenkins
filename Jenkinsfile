@@ -40,7 +40,7 @@ pipeline {
                 sh "echo ${ENV_URL}"
             }
         }
-        stage('checking maven commands'){
+        stage('maven commands'){
             steps{
                 sh 'mvn --version'
             }
