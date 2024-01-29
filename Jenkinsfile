@@ -3,7 +3,9 @@ pipeline {
     environment{
         ENV_URL  = "pipeline.learning.com"    // Declaring pipeline at Pipeline level
     }
-    triggers { cron('*/1 * * * *') }
+    // triggers { cron('*/1 * * * *') }
+    triggers {pollSCM('*/1 * * * *')}
+
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'Who should I say hello to?')
 
