@@ -42,7 +42,7 @@ pipeline {
         }
         stage('checking maven commands'){
             steps{
-                sh 'mvn clean'
+                sh 'mvn --version'
             }
         }
     }
