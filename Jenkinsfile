@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment{
+        ENV_URL  = "pipeline.learning.com"  
+    }
     stages{
         stage('stage Name-1'){
             steps{
@@ -12,6 +15,9 @@ pipeline {
                       echo This is Demo on Jenkins pipeline
                       echo printing '''
             }
+        }
+        stage('stage Name'){
+            sh "echo Printing the environment variable ${ENV_URL}"
         }
     }
 }
