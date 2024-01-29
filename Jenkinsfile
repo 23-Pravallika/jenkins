@@ -10,8 +10,10 @@ pipeline {
             }
         }
         stage('stage Name-2'){
-            steps{
+            environment{
                 ENV_URL  = "stage.learning.com"   // Declaring pipeline at stage level
+            }
+            steps{
                 sh "echo $ENV_URL"
             }
         }
