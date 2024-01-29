@@ -17,7 +17,9 @@ pipeline {
             }
         }
         stage('stage Name'){
-            sh "echo Printing the environment variable ${ENV_URL}"
+            steps{
+                sh "echo ${ENV_URL}"
+            }
         }
     }
 }
