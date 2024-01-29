@@ -5,6 +5,9 @@ pipeline {
     }
     // triggers { cron('*/1 * * * *') }
     triggers {pollSCM('*/1 * * * *')}
+    tools {
+        maven 'mvn' 
+    }
 
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'Who should I say hello to?')
@@ -21,6 +24,7 @@ pipeline {
         stage('stage Name-1'){
             steps{
                 sh 'echo This is Jenkins pipeline'
+                sh "echo ${ENV_URL}"
             }
         }
         stage('stage Name-2'){
@@ -34,6 +38,11 @@ pipeline {
         stage('stage Name'){
             steps{
                 sh "echo ${ENV_URL}"
+            }
+        }
+        stage('checking maven commands'){
+            steps{
+                sh "mvn claen"
             }
         }
     }
