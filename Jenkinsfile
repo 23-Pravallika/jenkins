@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        ENV_URL  = "pipeline.learning.com"  
+        ENV_URL  = "pipeline.learning.com"    // Declaring pipeline at Pipeline level
     }
     stages{
         stage('stage Name-1'){
@@ -10,10 +10,9 @@ pipeline {
             }
         }
         stage('stage Name-2'){
+            ENV_URL  = "stage.learning.com"   // Declaring pipeline at stage level
             steps{
-                sh '''echo This is Demo 
-                      echo This is Demo on Jenkins pipeline
-                      echo printing '''
+                sh "echo $ENV_URL"
             }
         }
         stage('stage Name'){
