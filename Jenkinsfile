@@ -53,5 +53,44 @@ pipeline {
                 sh 'echo Deploying'
             }
         }
+        stage('When with allOf'){
+            when{
+                allOf {                    //allOf Execute the stage when all of the nested conditions are true. Must contain at least one condition.
+                    branch 'qa'
+                    environment name: 'DEPLOY_TO', value: 'qa'
+                }
+            }
+            steps{
+                sh 'echo Deploying on Qa'
+            }
+        }
+        stage('When with anyof'){
+            when{
+                anyOf {                  //anyOf Execute the stage when at least one of the nested conditions is true. Must contain at least one condition.
+                    branch 'dev'
+                    environment name: 'DEPLOY_TO', value: 'dev'
+                }
+            }
+            steps{
+                sh 'echo Deploying on dev'
+            }
+        }
+        stage('Example on parallel stages') {
+            parallel {
+                stage('One') {
+                    steps {
+                    
+                       sh "echo STAGE One in parallel stages"
+                    }
+                }
+                stage('Two') {
+                    steps {
+                        sh "echo STAGE TWO in parallel stages"
+                        sh "sleep 1"
+                        sh "echo Printing "
+                    }
+                }
+            }
+        }
     }
 }
