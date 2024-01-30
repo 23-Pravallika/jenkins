@@ -24,12 +24,13 @@ pipeline {
 
     //     password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     // }
-    
+
     stages{
         stage('stage Name-1'){
             steps{
                 sh 'echo This is Jenkins pipeline'
                 sh "echo ${ENV_URL}"
+                sh 'env'
             }
         }
         stage('stage Name-2'){
