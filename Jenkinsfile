@@ -81,15 +81,21 @@ pipeline {
                     steps {
                     
                        sh "echo STAGE One in parallel stages"
+                       sh "sleep 10"
                     }
                 }
                 stage('Two') {
                     steps {
                         sh "echo STAGE TWO in parallel stages"
-                        sh "sleep 1"
-                        sh "echo Printing "
+                        sh "sleep 10"
+                        sh "echo Printing 2"
                     }
                 }
+                stage('Three') {
+                    steps {
+                        sh "echo STAGE Three in parallel stages"
+                        sh "sleep 10"
+                        sh "echo Printing 3"
             }
         }
     }
