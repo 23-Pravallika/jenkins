@@ -1,10 +1,14 @@
 pipeline {
     agent any
-    environment{
+    
+    environment{                             // all the sensitive info are mentioned under this environment
         ENV_URL  = "pipeline.learning.com"    // Declaring pipeline at Pipeline level
+        SSH_CRED = credentials('SSH_CREDS')
     }
+
     // triggers { cron('*/1 * * * *') }
     // triggers {pollSCM('*/1 * * * *')}
+
     tools {
         maven 'mvn' 
     }
