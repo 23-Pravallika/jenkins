@@ -4,7 +4,7 @@ pipeline {
         ENV_URL  = "pipeline.learning.com"    // Declaring pipeline at Pipeline level
     }
     // triggers { cron('*/1 * * * *') }
-    triggers {pollSCM('*/1 * * * *')}
+    // triggers {pollSCM('*/1 * * * *')}
     tools {
         maven 'mvn' 
     }
@@ -43,6 +43,14 @@ pipeline {
         stage('maven commands'){
             steps{
                 sh 'mvn --version'
+            }
+        }
+        stage('Using When'){
+            when {
+                branch 'dev'
+            }
+            steps{
+                sh 'echo Deploying'
             }
         }
     }
