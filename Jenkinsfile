@@ -31,7 +31,7 @@ pipeline {
                 sh 'echo This is Jenkins pipeline'
                 sh "echo ${ENV_URL}"
                 sh 'env'
-                sh 'cat /home/centos/Jenkins-Node/testfile'
+               // sh 'cat /home/centos/Jenkins-Node/testfile'
             }
         }
         stage('stage Name-2'){
