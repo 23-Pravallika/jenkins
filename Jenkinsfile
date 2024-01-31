@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'Jenkins-WS'}
     
     environment{                             // all the sensitive info are mentioned under this environment
         ENV_URL  = "pipeline.learning.com"    // Declaring pipeline at Pipeline level
@@ -31,6 +31,7 @@ pipeline {
                 sh 'echo This is Jenkins pipeline'
                 sh "echo ${ENV_URL}"
                 sh 'env'
+                sh 'cd /home/centos/Jenkins-Node'
             }
         }
         stage('stage Name-2'){
