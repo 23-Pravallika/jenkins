@@ -16,8 +16,6 @@ pipeline {
                     sh "terraform apply -var-file=${ENV}-env/${ENV}.tfvars -auto-approve"
             }
         }
-    }
-    stages{
         stage('Terraform Create Databases'){
             steps{
                 git branch: 'main', url: 'https://github.com/23-Pravallika/tf-vpc.git'
