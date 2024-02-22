@@ -22,7 +22,7 @@ pipeline {
                     sh "terrafile -f ${ENV}-env/Terrafile"
                     sh "terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars"
                     sh "terraform plan -var-file=${ENV}-env/${ENV}.tfvars"
-                    sh "terraform apply -var-file=${ENV}-env/${ENV}.tfvars -auto-approve"
+                    sh "terraform destroy -var-file=${ENV}-env/${ENV}.tfvars -auto-approve"
             }
         }
         stage('Terraform Destroy Network'){
