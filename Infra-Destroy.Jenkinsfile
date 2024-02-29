@@ -24,7 +24,7 @@ pipeline {
                     sh '''
                             cd mutable-Infra
                             terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                            terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.1 -auto-approve
+                            terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2 -auto-approve
                     '''
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
                     sh '''
                             cd mutable-Infra
                             terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                            terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.1 -auto-approve
+                            terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2 -auto-approve
                     '''
                 }
             }
