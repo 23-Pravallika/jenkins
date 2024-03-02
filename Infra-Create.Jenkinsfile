@@ -36,32 +36,32 @@ pipeline {
         }
         stage('Backend'){
             parallel{
-                stage('Creating-Catalogue'){
-                    steps{
-                        dir('Catalogue'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/catalogue.git')
-                            sh '''
-                                    cd mutable-Infra
-                                    terrafile -f ${ENV}-env/Terrafile
-                                    terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                                    terraform plan -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2
-                                    terraform apply -var-file=${ENV}-env/${ENV}.tfvars -var APP_VERSION=0.0.2 -auto-approve
-                            '''
-                        }
-                    }
-                }
-                stage('Creating-User'){
-                    steps{
-                        dir('User'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/user.git')
-                            sh '''
-                                    cd mutable-Infra
-                                    terrafile -f ${ENV}-env/Terrafile
-                                    terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                                    terraform plan -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2
-                                    terraform apply -var-file=${ENV}-env/${ENV}.tfvars -var APP_VERSION=0.0.2 -auto-approve
-                            '''
-                        }
-                    }
-                }
+                // stage('Creating-Catalogue'){
+                //     steps{
+                //         dir('Catalogue'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/catalogue.git')
+                //             sh '''
+                //                     cd mutable-Infra
+                //                     terrafile -f ${ENV}-env/Terrafile
+                //                     terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
+                //                     terraform plan -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2
+                //                     terraform apply -var-file=${ENV}-env/${ENV}.tfvars -var APP_VERSION=0.0.2 -auto-approve
+                //             '''
+                //         }
+                //     }
+                // }
+                // stage('Creating-User'){
+                //     steps{
+                //         dir('User'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/user.git')
+                //             sh '''
+                //                     cd mutable-Infra
+                //                     terrafile -f ${ENV}-env/Terrafile
+                //                     terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
+                //                     terraform plan -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2
+                //                     terraform apply -var-file=${ENV}-env/${ENV}.tfvars -var APP_VERSION=0.0.2 -auto-approve
+                //             '''
+                //         }
+                //     }
+                // }
                 stage('Creating-Cart'){
                     steps{
                         dir('Cart'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/cart.git')
@@ -88,19 +88,19 @@ pipeline {
                         }
                     }
                 }
-                stage('Creating-Payment'){
-                    steps{
-                        dir('Payment'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/payment.git')
-                            sh '''
-                                    cd mutable-Infra
-                                    terrafile -f ${ENV}-env/Terrafile
-                                    terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                                    terraform plan -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.1
-                                    terraform apply -var-file=${ENV}-env/${ENV}.tfvars -var APP_VERSION=0.0.1 -auto-approve
-                            '''
-                        }
-                    }
-                }
+                // stage('Creating-Payment'){
+                //     steps{
+                //         dir('Payment'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/payment.git')
+                //             sh '''
+                //                     cd mutable-Infra
+                //                     terrafile -f ${ENV}-env/Terrafile
+                //                     terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
+                //                     terraform plan -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.1
+                //                     terraform apply -var-file=${ENV}-env/${ENV}.tfvars -var APP_VERSION=0.0.1 -auto-approve
+                //             '''
+                //         }
+                //     }
+                // }
                 stage('Creating-Frontend'){
                     steps{
                         dir('Frontend'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/frontend.git')
