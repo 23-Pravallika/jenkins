@@ -18,28 +18,28 @@ pipeline {
                 }
             }
         }
-        stage('Destroying User'){
-            steps{
-                dir('User'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/user.git')
-                    sh '''
-                            cd mutable-Infra
-                            terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                            terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2 -auto-approve
-                    '''
-                }
-            }
-        }
-        stage('Destroying Catalogue'){
-            steps{
-                dir('Catalogue'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/catalogue.git')
-                    sh '''
-                            cd mutable-Infra
-                            terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
-                            terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2 -auto-approve
-                    '''
-                }
-            }
-        }
+        // stage('Destroying User'){
+        //     steps{
+        //         dir('User'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/user.git')
+        //             sh '''
+        //                     cd mutable-Infra
+        //                     terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
+        //                     terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2 -auto-approve
+        //             '''
+        //         }
+        //     }
+        // }
+        // stage('Destroying Catalogue'){
+        //     steps{
+        //         dir('Catalogue'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/catalogue.git')
+        //             sh '''
+        //                     cd mutable-Infra
+        //                     terraform init -reconfigure -backend-config=${ENV}-env/${ENV}-backend.tfvars
+        //                     terraform destroy -var-file=${ENV}-env/${ENV}.tfvars  -var APP_VERSION=0.0.2 -auto-approve
+        //             '''
+        //         }
+        //     }
+        // }
         // stage('Destroying Payment'){
         //     steps{
         //         dir('Payment'){ git(branch: 'main', url: 'https://github.com/23-Pravallika/payment.git')
